@@ -8,12 +8,18 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController, UICollectionViewDataSource {
-  //Collection View: to display images from gallery.
+class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+  //MARK: Properties
+  
+  //Collection View: to display images from gallery
   var galleryCollectionView: UICollectionView!
-
-  //Images: to display in collection view.
+  //Images: to display in collection view
   var galleryImages = [UIImage]()
+  
+  //Delegate: points to back to View Controller
+  var delegate: ImageSelectedProtocol?
+  
+  //MARK: ViewController object layout
   
   //Function: Set View Controller - objects, layout, and actions.
   override func loadView() {
@@ -23,8 +29,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
     //Root View:
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
-    
-    //MARK: ViewController views & subviews
     
     //Layout: add subviews and set constraints
       //Collection view layout:
@@ -51,7 +55,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
     //Super:
     super.viewDidLoad()
     
-    //Add images to gallery images array.
+    //Images: add images to gallery images array.
     galleryImages.append(UIImage(named: "bridge.jpeg")!)
     galleryImages.append(UIImage(named: "cityatnight.jpeg")!)
     galleryImages.append(UIImage(named: "parkbench.jpeg")!)
@@ -59,12 +63,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
     galleryImages.append(UIImage(named: "train.jpeg")!)
     galleryImages.append(UIImage(named: "vespa.jpeg")!)
     
+    //Collection view:
     //Register collection view cell.
     galleryCollectionView.registerClass(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: "CELL_GALLERY")
-    
-    //Collection view: data source
+    //Collection view: data source & delegate
     galleryCollectionView.dataSource = self
+    galleryCollectionView.delegate = self
   } //end func
+  
+  //MARK: UICollectionViewDataSource
   
   //Function: Set collection view cell count.
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -75,11 +82,19 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     //Cell:
     var cell = collectionView.dequeueReusableCellWithReuseIdentifier("CELL_GALLERY", forIndexPath: indexPath) as GalleryCollectionViewCell
-    
     //Set cell image.
     cell.imageView.image = galleryImages[indexPath.row]
-    
     //Return cell.
     return cell
+  } //end func
+  
+  //MARK: UICollectionViewDelegate
+  
+  //Function: Set selected image controller and pop View Controller.
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    //Set selected image.
+    self.delegate?.controllerDidSelectImage(galleryImages[indexPath.row])
+    //Go back to View Controller.
+    self.navigationController?.popViewControllerAnimated(true)
   } //end func
 }

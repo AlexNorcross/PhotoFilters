@@ -18,8 +18,12 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     super.init(frame: frame)
     
     //Layout: add subviews and set constraints
+    //Image:
     self.addSubview(imageView)
     imageView.frame = self.bounds
+    //Content mode:
+    imageView.contentMode = UIViewContentMode.ScaleAspectFill
+    imageView.layer.masksToBounds = true
   } //end init
   
   //Initialize.

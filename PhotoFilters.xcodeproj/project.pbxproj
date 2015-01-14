@@ -12,14 +12,16 @@
 		BA47A2701A646A08005CAB0D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA47A26F1A646A08005CAB0D /* Images.xcassets */; };
 		BA47A2731A646A08005CAB0D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA47A2711A646A08005CAB0D /* LaunchScreen.xib */; };
 		BA47A27F1A646A08005CAB0D /* PhotoFiltersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47A27E1A646A08005CAB0D /* PhotoFiltersTests.swift */; };
-		BA47A28C1A647378005CAB0D /* cityatnight.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BA47A28B1A647378005CAB0D /* cityatnight.jpeg */; };
-		BA47A28E1A647385005CAB0D /* vespa.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BA47A28D1A647385005CAB0D /* vespa.jpeg */; };
 		BA62C5C91A648186003B5D3D /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62C5C81A648186003B5D3D /* GalleryViewController.swift */; };
 		BA62C5CB1A648365003B5D3D /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA62C5CA1A648365003B5D3D /* GalleryCollectionViewCell.swift */; };
-		BA62C5CD1A648F88003B5D3D /* bridge.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BA62C5CC1A648F88003B5D3D /* bridge.jpeg */; };
-		BA62C5CF1A648F94003B5D3D /* street.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BA62C5CE1A648F94003B5D3D /* street.jpeg */; };
-		BA62C5D11A648FA8003B5D3D /* train.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BA62C5D01A648FA8003B5D3D /* train.jpeg */; };
-		BA62C5D31A648FBB003B5D3D /* parkbench.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BA62C5D21A648FBB003B5D3D /* parkbench.jpeg */; };
+		BAA6E32D1A65B9CF002F5D76 /* ImageSelectedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6E32C1A65B9CF002F5D76 /* ImageSelectedProtocol.swift */; };
+		BAA6E3341A65BB45002F5D76 /* bridge.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BAA6E32E1A65BB45002F5D76 /* bridge.jpeg */; };
+		BAA6E3351A65BB45002F5D76 /* cityatnight.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BAA6E32F1A65BB45002F5D76 /* cityatnight.jpeg */; };
+		BAA6E3361A65BB45002F5D76 /* parkbench.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BAA6E3301A65BB45002F5D76 /* parkbench.jpeg */; };
+		BAA6E3371A65BB45002F5D76 /* street.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BAA6E3311A65BB45002F5D76 /* street.jpeg */; };
+		BAA6E3381A65BB45002F5D76 /* train.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BAA6E3321A65BB45002F5D76 /* train.jpeg */; };
+		BAA6E3391A65BB45002F5D76 /* vespa.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BAA6E3331A65BB45002F5D76 /* vespa.jpeg */; };
+		BAA6E33D1A65E510002F5D76 /* FilteredThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6E33C1A65E510002F5D76 /* FilteredThumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,14 +44,16 @@
 		BA47A2781A646A08005CAB0D /* PhotoFiltersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoFiltersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA47A27D1A646A08005CAB0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA47A27E1A646A08005CAB0D /* PhotoFiltersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFiltersTests.swift; sourceTree = "<group>"; };
-		BA47A28B1A647378005CAB0D /* cityatnight.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cityatnight.jpeg; sourceTree = "<group>"; };
-		BA47A28D1A647385005CAB0D /* vespa.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vespa.jpeg; sourceTree = "<group>"; };
 		BA62C5C81A648186003B5D3D /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		BA62C5CA1A648365003B5D3D /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
-		BA62C5CC1A648F88003B5D3D /* bridge.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bridge.jpeg; sourceTree = "<group>"; };
-		BA62C5CE1A648F94003B5D3D /* street.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = street.jpeg; sourceTree = "<group>"; };
-		BA62C5D01A648FA8003B5D3D /* train.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = train.jpeg; sourceTree = "<group>"; };
-		BA62C5D21A648FBB003B5D3D /* parkbench.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = parkbench.jpeg; sourceTree = "<group>"; };
+		BAA6E32C1A65B9CF002F5D76 /* ImageSelectedProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectedProtocol.swift; sourceTree = "<group>"; };
+		BAA6E32E1A65BB45002F5D76 /* bridge.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bridge.jpeg; sourceTree = "<group>"; };
+		BAA6E32F1A65BB45002F5D76 /* cityatnight.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cityatnight.jpeg; sourceTree = "<group>"; };
+		BAA6E3301A65BB45002F5D76 /* parkbench.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = parkbench.jpeg; sourceTree = "<group>"; };
+		BAA6E3311A65BB45002F5D76 /* street.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = street.jpeg; sourceTree = "<group>"; };
+		BAA6E3321A65BB45002F5D76 /* train.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = train.jpeg; sourceTree = "<group>"; };
+		BAA6E3331A65BB45002F5D76 /* vespa.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vespa.jpeg; sourceTree = "<group>"; };
+		BAA6E33C1A65E510002F5D76 /* FilteredThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredThumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 			children = (
 				BA47A26A1A646A08005CAB0D /* ViewController.swift */,
 				BA62C5C81A648186003B5D3D /* GalleryViewController.swift */,
+				BAA6E32C1A65B9CF002F5D76 /* ImageSelectedProtocol.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -139,13 +144,13 @@
 			isa = PBXGroup;
 			children = (
 				BA47A2711A646A08005CAB0D /* LaunchScreen.xib */,
-				BA62C5CC1A648F88003B5D3D /* bridge.jpeg */,
-				BA47A28B1A647378005CAB0D /* cityatnight.jpeg */,
-				BA62C5D21A648FBB003B5D3D /* parkbench.jpeg */,
-				BA62C5CE1A648F94003B5D3D /* street.jpeg */,
-				BA62C5D01A648FA8003B5D3D /* train.jpeg */,
-				BA47A28D1A647385005CAB0D /* vespa.jpeg */,
 				BA62C5CA1A648365003B5D3D /* GalleryCollectionViewCell.swift */,
+				BAA6E32E1A65BB45002F5D76 /* bridge.jpeg */,
+				BAA6E32F1A65BB45002F5D76 /* cityatnight.jpeg */,
+				BAA6E3301A65BB45002F5D76 /* parkbench.jpeg */,
+				BAA6E3311A65BB45002F5D76 /* street.jpeg */,
+				BAA6E3321A65BB45002F5D76 /* train.jpeg */,
+				BAA6E3331A65BB45002F5D76 /* vespa.jpeg */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 		BA47A28A1A646AEB005CAB0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BAA6E33C1A65E510002F5D76 /* FilteredThumbnail.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -237,14 +243,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA62C5D31A648FBB003B5D3D /* parkbench.jpeg in Resources */,
-				BA62C5CF1A648F94003B5D3D /* street.jpeg in Resources */,
-				BA62C5CD1A648F88003B5D3D /* bridge.jpeg in Resources */,
-				BA47A28C1A647378005CAB0D /* cityatnight.jpeg in Resources */,
-				BA47A28E1A647385005CAB0D /* vespa.jpeg in Resources */,
-				BA62C5D11A648FA8003B5D3D /* train.jpeg in Resources */,
+				BAA6E3371A65BB45002F5D76 /* street.jpeg in Resources */,
+				BAA6E3361A65BB45002F5D76 /* parkbench.jpeg in Resources */,
+				BAA6E3351A65BB45002F5D76 /* cityatnight.jpeg in Resources */,
 				BA47A2731A646A08005CAB0D /* LaunchScreen.xib in Resources */,
+				BAA6E3381A65BB45002F5D76 /* train.jpeg in Resources */,
+				BAA6E3391A65BB45002F5D76 /* vespa.jpeg in Resources */,
 				BA47A2701A646A08005CAB0D /* Images.xcassets in Resources */,
+				BAA6E3341A65BB45002F5D76 /* bridge.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAA6E32D1A65B9CF002F5D76 /* ImageSelectedProtocol.swift in Sources */,
 				BA62C5C91A648186003B5D3D /* GalleryViewController.swift in Sources */,
 				BA62C5CB1A648365003B5D3D /* GalleryCollectionViewCell.swift in Sources */,
+				BAA6E33D1A65E510002F5D76 /* FilteredThumbnail.swift in Sources */,
 				BA47A26B1A646A08005CAB0D /* ViewController.swift in Sources */,
 				BA47A2691A646A08005CAB0D /* AppDelegate.swift in Sources */,
 			);
