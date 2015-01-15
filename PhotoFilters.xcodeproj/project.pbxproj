@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0D294C1A6737A10062357D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0D294B1A6737A10062357D /* PhotosViewController.swift */; };
 		BA47A2691A646A08005CAB0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47A2681A646A08005CAB0D /* AppDelegate.swift */; };
 		BA47A26B1A646A08005CAB0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47A26A1A646A08005CAB0D /* ViewController.swift */; };
 		BA47A2701A646A08005CAB0D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA47A26F1A646A08005CAB0D /* Images.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA0D294B1A6737A10062357D /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		BA47A2631A646A08005CAB0D /* PhotoFilters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFilters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA47A2671A646A08005CAB0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA47A2681A646A08005CAB0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				BA47A26A1A646A08005CAB0D /* ViewController.swift */,
+				BA0D294B1A6737A10062357D /* PhotosViewController.swift */,
 				BA62C5C81A648186003B5D3D /* GalleryViewController.swift */,
 				BAA6E32C1A65B9CF002F5D76 /* ImageSelectedProtocol.swift */,
 			);
@@ -272,6 +275,7 @@
 				BA62C5C91A648186003B5D3D /* GalleryViewController.swift in Sources */,
 				BA62C5CB1A648365003B5D3D /* GalleryCollectionViewCell.swift in Sources */,
 				BAA6E33D1A65E510002F5D76 /* FilteredThumbnail.swift in Sources */,
+				BA0D294C1A6737A10062357D /* PhotosViewController.swift in Sources */,
 				BA47A26B1A646A08005CAB0D /* ViewController.swift in Sources */,
 				BA47A2691A646A08005CAB0D /* AppDelegate.swift in Sources */,
 			);
@@ -391,6 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoFilters/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -401,6 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoFilters/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

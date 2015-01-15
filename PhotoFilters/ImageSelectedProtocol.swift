@@ -10,5 +10,5 @@ import UIKit
 
 protocol ImageSelectedProtocol {
   //Function: Handles 
-  func controllerDidSelectImage(selectedImage : UIImage) -> Void
+  func controllerDidSelectImage(selectedImage: UIImage) -> Void
 }

@@ -11,13 +11,18 @@ import UIKit
 class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
   //MARK: Properties
   
+  //NOTE: required to be set before View Controller is presented
+  //Delegate: points to back to View Controller
+  var delegate: ImageSelectedProtocol?
+  
   //Collection View: to display images from gallery
   var galleryCollectionView: UICollectionView!
   //Images: to display in collection view
   var galleryImages = [UIImage]()
-  
-  //Delegate: points to back to View Controller
-  var delegate: ImageSelectedProtocol?
+
+  //Image width & height:
+  let cellWid = 100
+  let cellHgt = 100
   
   //MARK: ViewController object layout
   
@@ -33,7 +38,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     //Layout: add subviews and set constraints
       //Collection view layout:
       let layoutFlow = UICollectionViewFlowLayout()
-      layoutFlow.itemSize = CGSize(width: 100, height: 100)
+      layoutFlow.itemSize = CGSize(width: cellWid, height: cellHgt)
       //Collection view:
       galleryCollectionView = UICollectionView(frame: rootView.frame, collectionViewLayout: layoutFlow)
       rootView.addSubview(galleryCollectionView)
@@ -44,6 +49,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
       rootView.addConstraints(galleryConstraintWid)
       let galleryConstraintHgt = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[galleryCollectionView]-5-|", options: nil, metrics: nil, views: dictionarySubview)
       rootView.addConstraints(galleryConstraintHgt)
+      //Appearance:
       galleryCollectionView.backgroundColor = UIColor.whiteColor()
     
     //Set root view.
@@ -94,7 +100,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     //Set selected image.
     self.delegate?.controllerDidSelectImage(galleryImages[indexPath.row])
-    //Go back to View Controller.
+    //Go back to view controller.
     self.navigationController?.popViewControllerAnimated(true)
   } //end func
 }

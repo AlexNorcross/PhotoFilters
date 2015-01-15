@@ -25,6 +25,8 @@ class FilteredThumbnail {
   //Function: Apply filter to original image.
   func applyFilter(completionHandler: () -> ()) {
     queueImage.addOperationWithBlock { () -> Void in
+      //Initialize filtered image.
+      self.filteredImage = nil
       //Image to filter:
       let imageToFilter = CIImage(image: self.originalImage)
       //Filter: set all inputs to default values; and set image to filter.
