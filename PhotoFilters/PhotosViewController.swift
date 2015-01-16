@@ -30,7 +30,7 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
   let cellWid = 100
   let cellHgt = 100
   
-  //Pinch gesture:
+  //Pinch gesture: resize images
   var pinchGesture: PinchGestureOnCollectionView!
   
   //MARK: ViewController object layout

@@ -31,16 +31,16 @@ class PinchGestureOnCollectionView: NSObject {
   
   //Function: Handle pinch event - resize collection view.
   func collectionViewPinched(sender: UIPinchGestureRecognizer) {
-    if sender.state == .Ended {
+    if sender.state == .Changed {
       collectionView.performBatchUpdates({ () -> Void in
         if sender.velocity != 0 {
           let currentFlowLayout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
           let currentSize = currentFlowLayout.itemSize
           var newSize: CGSize!
           if sender.velocity > 0 {
-            newSize = CGSize(width: currentSize.width * 2, height: currentSize.height * 2)
+            newSize = CGSize(width: currentSize.width * 1.025, height: currentSize.height * 1.025)
           } else if sender.velocity < 0 {
-            newSize = CGSize(width: currentSize.width * 0.5, height: currentSize.height * 0.5)
+            newSize = CGSize(width: currentSize.width * 0.95, height: currentSize.height * 0.95)
           } //end if
           currentFlowLayout.itemSize = newSize
         } //end if

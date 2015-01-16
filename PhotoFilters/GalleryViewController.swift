@@ -24,7 +24,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   let cellWid = 100
   let cellHgt = 100
   
-  //Pinch gesture:
+  //Pinch gesture: resizes images
   var pinchGesture: PinchGestureOnCollectionView!
   
   //MARK: ViewController object layout

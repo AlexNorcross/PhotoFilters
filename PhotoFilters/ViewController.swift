@@ -76,12 +76,13 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
       dictionarySubview["buttonPhoto"] = buttonPhoto
       //Appearance:
       buttonPhoto.setTitle(NSLocalizedString("photo", comment: "photo button text"), forState: .Normal)
-      buttonPhoto.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-      buttonPhoto.backgroundColor = UIColor.blackColor()
+      buttonPhoto.setTitleColor(UIColor.blackColor(), forState: .Normal)
       buttonPhoto.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
       buttonPhoto.layer.cornerRadius = 5
+      buttonPhoto.layer.borderColor = UIColor.grayColor().CGColor
+      buttonPhoto.layer.borderWidth = 1.0
       //Constraints: width; bottom center of screen
-      buttonPhoto.contentEdgeInsets = UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
+      buttonPhoto.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
       let buttonPhotoConstraintBottom = NSLayoutConstraint.constraintsWithVisualFormat("V:[buttonPhoto]-10-|", options: nil, metrics: nil, views: dictionarySubview)
       rootView.addConstraints(buttonPhotoConstraintBottom)
       let buttonPhotoConstraintHoriz = NSLayoutConstraint(item: buttonPhoto, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 1.0)
@@ -163,6 +164,12 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
       for filterName in filterNames {
         filteredImageThumbnails.append(FilteredThumbnail(filterName: filterName, contextGPU: contextGPU, queueImage: queueForFilteringImages))
       } //end for
+    
+    //Double tap gesture: on image, brings user to filter
+    var tapGesture = UITapGestureRecognizer(target: self, action: "didTapImage:")
+    tapGesture.numberOfTapsRequired = 2
+    imageViewMain.userInteractionEnabled = true
+    imageViewMain.addGestureRecognizer(tapGesture)
   } //end func
   
   //MARK: NavigationBar setup
@@ -222,6 +229,13 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   } //end func
   
   //MARK: Selectors
+  
+  //Function: Handle event when user double taps image - go to filter.
+  func didTapImage(sender: UITapGestureRecognizer) {
+    if sender.state == .Ended {
+      alertActionFilterPressed()
+    } //end if
+  } //end func
   
   //Function: Handle event when navigation bar Done button is pressed - set main image to selected filtered image.
   func buttonNavBarDonePressed() {
