@@ -30,6 +30,9 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
   let cellWid = 100
   let cellHgt = 100
   
+  //Pinch gesture:
+  var pinchGesture: PinchGestureOnCollectionView!
+  
   //MARK: ViewController object layout
   
   //Function: Set View Controller - objects, layout, and actions.
@@ -77,6 +80,9 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
     //Collection view: data source & delegate
     photosCollectionView.dataSource = self
     photosCollectionView.delegate = self
+    
+    //Initialize pinch gesture.
+    self.pinchGesture = PinchGestureOnCollectionView(collectionView: photosCollectionView)
   } //end func
   
   //MARK: UICollectionViewDataSource

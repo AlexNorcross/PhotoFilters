@@ -14,6 +14,8 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   
   //Main image view:
   let imageViewMain = UIImageView()
+  //Main image view unfiltered:
+  var imageViewMainOrg: UIImage?
   //Main image view constraints: reset to resize image when filtered photos collection view appears.
   var imageViewMainConstraintBottom: NSLayoutConstraint!
   //Main image view margin: bottom
@@ -24,7 +26,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   var buttonNavBarShare: UIBarButtonItem!
   
   //Alert controller:
-  let alertController = UIAlertController(title: "photos", message: "select an option", preferredStyle: UIAlertControllerStyle.ActionSheet)
+  let alertController = UIAlertController(title: NSLocalizedString("photos", comment: "photos menu title"), message: NSLocalizedString("select an option", comment: "photos menu message"), preferredStyle: UIAlertControllerStyle.ActionSheet)
   
   //Photo button:
   var buttonPhoto: UIButton!
@@ -73,14 +75,13 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
       buttonPhoto.setTranslatesAutoresizingMaskIntoConstraints(false)
       dictionarySubview["buttonPhoto"] = buttonPhoto
       //Appearance:
-      buttonPhoto.setTitle("photo", forState: .Normal)
+      buttonPhoto.setTitle(NSLocalizedString("photo", comment: "photo button text"), forState: .Normal)
       buttonPhoto.setTitleColor(UIColor.whiteColor(), forState: .Normal)
       buttonPhoto.backgroundColor = UIColor.blackColor()
       buttonPhoto.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
       buttonPhoto.layer.cornerRadius = 5
       //Constraints: width; bottom center of screen
-      let buttonPhotoConstraintWid = NSLayoutConstraint.constraintsWithVisualFormat("H:[buttonPhoto(150)]", options: nil, metrics: nil, views: dictionarySubview)
-      buttonPhoto.addConstraints(buttonPhotoConstraintWid)
+      buttonPhoto.contentEdgeInsets = UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
       let buttonPhotoConstraintBottom = NSLayoutConstraint.constraintsWithVisualFormat("V:[buttonPhoto]-10-|", options: nil, metrics: nil, views: dictionarySubview)
       rootView.addConstraints(buttonPhotoConstraintBottom)
       let buttonPhotoConstraintHoriz = NSLayoutConstraint(item: buttonPhoto, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 1.0)
@@ -153,7 +154,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     
     //Image filtering: one-time processes
       //Filter names:
-      let filterNames = ["CISepiaTone","CIPhotoEffectChrome", "CIPhotoEffectNoir", "CIPhotoEffectInstant"]
+      let filterNames = ["CISepiaTone", "CIPhotoEffectChrome", "CIPhotoEffectNoir", "CIPhotoEffectInstant"]
       //GPU context: setup
       let optionsGPU = [kCIContextWorkingColorSpace : NSNull()] //for speed
       let contextEAGL = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
@@ -168,7 +169,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   
   //Function: Sets up navigation bar.
   func setupNavigationBar() {
-    buttonNavBarDone = UIBarButtonItem(title: "done", style: UIBarButtonItemStyle.Done, target: self, action: "buttonNavBarDonePressed")
+    buttonNavBarDone = UIBarButtonItem(title: NSLocalizedString("done", comment: "navigation bar done button"), style: UIBarButtonItemStyle.Done, target: self, action: "buttonNavBarDonePressed")
     buttonNavBarShare = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "buttonNavBarSharePressed")
   } //end func
   
@@ -178,14 +179,14 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   func setupAlertController() {
     
     //Gallery: Show Gallery View Controller
-    let actionAlertOptGallery = UIAlertAction(title: "gallery", style: .Default) { (action) -> Void in
+    let actionAlertOptGallery = UIAlertAction(title: NSLocalizedString("gallery", comment: "menu gallery option"), style: .Default) { (action) -> Void in
       self.alertActionGalleryPressed()
     } //end closure
     alertController.addAction(actionAlertOptGallery)
     
     //Camera: Show camera, if available.
     if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-      let actionAlertOptCamera = UIAlertAction(title: "camera", style: .Default) { (action) -> Void in
+      let actionAlertOptCamera = UIAlertAction(title: NSLocalizedString("camera", comment: "menu camera option"), style: .Default) { (action) -> Void in
         //Set image picker view controller: set delegate and source to camera.
         let cameraViewController = UIImagePickerController()
         cameraViewController.delegate = self
@@ -199,7 +200,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     } //end if
     
     //Photos: Show user's photos.
-    let actionAlertOptPhotos = UIAlertAction(title: "my photos", style: .Default) { (action) -> Void in
+    let actionAlertOptPhotos = UIAlertAction(title: NSLocalizedString("my photos", comment: "menu my photos option"), style: .Default) { (action) -> Void in
       //Photos view controller: initialize.
       let photosViewController = PhotosViewController()
       photosViewController.delegate = self
@@ -210,13 +211,13 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     alertController.addAction(actionAlertOptPhotos)
 
     //Filter: Show collection selected image's filter options; if no photo selected, send user to gallery.
-    let actionAlertOptFilter = UIAlertAction(title: "filter my photo", style: .Default) { (action) -> Void in
+    let actionAlertOptFilter = UIAlertAction(title: NSLocalizedString("filter photo", comment: "menu filter photo option"), style: .Default) { (action) -> Void in
       self.alertActionFilterPressed()
     } //end closure
     alertController.addAction(actionAlertOptFilter)
     
     //Dismiss:
-    let actionAlertOptDismiss = UIAlertAction(title: "dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
+    let actionAlertOptDismiss = UIAlertAction(title: NSLocalizedString("dismiss menu", comment: "menu dismiss option"), style: UIAlertActionStyle.Cancel, handler: nil)
     alertController.addAction(actionAlertOptDismiss)
   } //end func
   
@@ -234,7 +235,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     if filteredImageSelected != nil {
       //Filter main image.
       //Image to filter:
-      let imageToFilter = CIImage(image: self.imageViewMain.image)
+      let imageToFilter = CIImage(image: imageViewMainOrg)
       //Filter: set all inputs to default values; and set image to filter.
       let filter = CIFilter(name: filteredImageSelectedFilterName)
       filter.setDefaults()
@@ -274,9 +275,9 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     } //end if
     else {
       //Alert controller:
-      let alertNoTwitter = UIAlertController(title: "warning", message: "you must be signed into Twitter", preferredStyle: UIAlertControllerStyle.Alert)
+      let alertNoTwitter = UIAlertController(title: NSLocalizedString("warning", comment: "no twitter alert warning title"), message: NSLocalizedString("you must sign into Twitter", comment: "no twitter alert warning message"), preferredStyle: UIAlertControllerStyle.Alert)
       //Dismiss option:
-      let optionDismiss = UIAlertAction(title: "dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
+      let optionDismiss = UIAlertAction(title: NSLocalizedString("dismiss alert", comment: "no twitter alert dismiss option"), style: UIAlertActionStyle.Cancel, handler: nil)
       alertNoTwitter.addAction(optionDismiss)
       //Present alert controller.
       self.presentViewController(alertNoTwitter, animated: true, completion: nil)
@@ -295,6 +296,9 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   func controllerDidSelectImage(selectedImage: UIImage) {
     //Reset main image view.
     self.imageViewMain.image = selectedImage
+    
+    //Set main image view original image - to avoid filtering a filtered image.
+    imageViewMainOrg = selectedImage
 
     //Initialize filtered image thumbnail selected.
     filteredImageSelected = nil
@@ -310,6 +314,13 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     //End context.
     UIGraphicsEndImageContext()
     
+    //Unhighlight filtered image previously selected.
+    for cell in filteredImageCollectionView.visibleCells() as [GalleryCollectionViewCell] {
+      cell.imageView.layer.borderWidth = 0.0
+      cell.imageView.layer.borderColor = nil
+    } //end for
+
+
     //Reload collection view (=> filters images in collection view).
     filteredImageCollectionView.reloadData()
   } //end func
@@ -407,6 +418,9 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     let thumbnail = filteredImageThumbnails[indexPath.row]
     filteredImageSelected = thumbnail.filteredImage
     filteredImageSelectedFilterName = thumbnail.filterName
+    
+    //Scroll to see whole cell.
+    collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
   } //end func
   
   //Function: Unhighlight filtered image previously selected.

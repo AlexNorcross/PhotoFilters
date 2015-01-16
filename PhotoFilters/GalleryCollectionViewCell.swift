@@ -12,15 +12,25 @@ class GalleryCollectionViewCell: UICollectionViewCell {
   //Image:
   var imageView = UIImageView()
   
-  //Initialize: Set cell.
+  //Initialize: Set class properties.
   override init(frame: CGRect) {
     //Super:
     super.init(frame: frame)
+    
+    //Subview dictionary: for Visual Format Language
+    var dictionarySubview = [String : AnyObject]()
     
     //Layout: add subviews and set constraints
     //Image:
     self.addSubview(imageView)
     imageView.frame = self.bounds
+    imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    dictionarySubview["imageView"] = imageView
+    //Constraints: stretch horizontally & vertically across collection view cell
+    let imageViewContraintHoriz = NSLayoutConstraint.constraintsWithVisualFormat("H:|[imageView]|", options: nil, metrics: nil, views: dictionarySubview)
+    self.addConstraints(imageViewContraintHoriz)
+    let imageViewConstraintVert = NSLayoutConstraint.constraintsWithVisualFormat("V:|[imageView]|", options: nil, metrics: nil, views: dictionarySubview)
+    self.addConstraints(imageViewConstraintVert)
     //Content mode:
     imageView.contentMode = UIViewContentMode.ScaleAspectFill
     imageView.layer.masksToBounds = true
