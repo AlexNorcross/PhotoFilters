@@ -172,6 +172,15 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     imageViewMain.addGestureRecognizer(tapGesture)
   } //end func
   
+  override func viewDidAppear(animated: Bool) {
+    //Super:
+    super.viewDidAppear(animated)
+
+    //Set alert controller pop over properties - avoids bug when returning to view controller.
+    alertController.popoverPresentationController?.sourceView = buttonPhoto.self
+    alertController.popoverPresentationController?.sourceRect = buttonPhoto.bounds
+  } //end func
+  
   //MARK: NavigationBar setup
   
   //Function: Sets up navigation bar.
@@ -181,9 +190,11 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   } //end func
   
   //MARK: AlertController setup
-  
+
   //Function: Sets up alert controller.
   func setupAlertController() {
+    //Set alert controller to pop over (to function properly on iPad).
+    alertController.modalPresentationStyle = UIModalPresentationStyle.Popover
     
     //Gallery: Show Gallery View Controller
     let actionAlertOptGallery = UIAlertAction(title: NSLocalizedString("gallery", comment: "menu gallery option"), style: .Default) { (action) -> Void in
@@ -300,7 +311,6 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   
   //Function: Handle event when Photo button is pressed - allow user to select a photo option.
   func buttonPhotoPressed() {
-    //Present alert controller.
     self.presentViewController(self.alertController, animated: true, completion: nil)
   } //end func
   
